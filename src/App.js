@@ -11,6 +11,7 @@ function App() {
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
       // "https://greg-vinted-api.herokuapp.com/offers"  =======> Il manque les images => A FAIRE
+      // "https://lereacteur-vinted-api.herokuapp.com/offers"
       const response = await axios.get(
          "https://lereacteur-vinted-api.herokuapp.com/offers"
       );
@@ -26,8 +27,8 @@ function App() {
       <>
          <Router>
             <Switch>
-               <Route path="/product/:id">
-                  <Product />
+               <Route path="/offer/:id">
+                  <Product data={data} />
                </Route>
                <Route path="/">
                   <Home data={data} />
