@@ -1,7 +1,8 @@
 const Content = ({ data }) => {
+   //{data.offers[0].product_details[0]}
    return (
       <div className="container content">
-         {data.offers[0].product_details[0]}
+         Liste des produits
          {
             (data.offers.map = (item, index) => (
                <div>
@@ -9,7 +10,6 @@ const Content = ({ data }) => {
                </div>
             ))
          }
-         ) Liste des produits
       </div>
    );
 };
