@@ -1,10 +1,15 @@
+import Logo from "../assets/Image/logo.png";
+import Menu from "../components/Menu";
+import Hook from "../components/Hook";
 const Header = () => {
    return (
       <>
          <header className="container">
-            <h1 className="h1">Titre</h1>
+            <img className="logo" src={Logo} alt="Logo Vinted"></img>
          </header>
-         <div style={{ "border-bottom": "grey 1px solid" }}></div>
+         <div className="sep"></div>
+         <Menu />
+         <Hook />
       </>
    );
 };

@@ -2,14 +2,11 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import Footer from "../components/Footer";
 
-const Home = () => {
-   let id = "toto";
+const Home = ({ data }) => {
    return (
       <div>
          <Header />
-         <link to={"/Product/${id}"}>Product</link>
-         <Content />
-
+         <Content data={data} />
          <Footer />
       </div>
    );

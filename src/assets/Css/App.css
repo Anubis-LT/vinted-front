@@ -6,7 +6,7 @@
    font-family: "Roboto", sans-serif;
 }
 .container {
-   width: 80%;
+   width: 65%;
    margin: 0 auto;
 }
 header {
@@ -16,6 +16,23 @@ header {
 h1 {
    padding: 15px;
    font-size: 20px;
+}
+.logo {
+   width: 90px;
+   margin-top: 8px;
+}
+.sep {
+   border-bottom: rgb(163, 163, 163) 1px solid;
+}
+
+.menu {
+   color: grey;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+}
+.menu p {
+   margin-right: 30px;
 }
 
 .content {
