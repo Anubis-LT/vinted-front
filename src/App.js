@@ -1,14 +1,22 @@
 import "./assets/Css/App.css";
-import Header from "./components/Header";
-import Content from "./components/Content";
-import Footer from "./components/Footer";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./containers/Home";
+import Product from "./containers/Product";
 
 function App() {
    return (
       <>
-         <Header />
-         <Content />
-         <Footer />
+         <Router>
+            <Switch>
+               <Route path="/">
+                  <Home />
+               </Route>
+               <Route path="/Product/:id">
+                  <Product />
+               </Route>
+            </Switch>
+         </Router>
       </>
    );
 }
