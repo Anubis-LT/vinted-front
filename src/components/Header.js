@@ -1,6 +1,5 @@
 import Logo from "../assets/Image/logo.png";
-import Menu from "../components/Menu";
-import Hook from "../components/Hook";
+
 const Header = () => {
    return (
       <>
@@ -8,8 +7,6 @@ const Header = () => {
             <img className="logo" src={Logo} alt="Logo Vinted"></img>
          </header>
          <div className="sep"></div>
-         <Menu />
-         <Hook />
       </>
    );
 };

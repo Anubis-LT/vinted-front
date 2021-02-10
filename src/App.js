@@ -26,11 +26,11 @@ function App() {
       <>
          <Router>
             <Switch>
+               <Route path="/product/:id">
+                  <Product />
+               </Route>
                <Route path="/">
                   <Home data={data} />
-               </Route>
-               <Route path="/Product/:id">
-                  <Product />
                </Route>
             </Switch>
          </Router>

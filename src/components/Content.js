@@ -1,16 +1,26 @@
+import { Link } from "react-router-dom";
+
 const Content = ({ data }) => {
-   //{data.offers[0].product_details[0]}
    return (
-      <div className="container content">
+      <>
          Liste des produits
-         {
-            (data.offers.map = (item, index) => (
-               <div>
-                  <p>item[index]</p>
+         <div className="container content">
+            <div className="list_product">
+               <div className="products">
+                  {data.offers.map((item, index) => (
+                     <Link to={`/product/${item._id}`}>
+                        <div className="product">
+                           <div>{item.product_name}</div>
+                           <div>{item.product_name}</div>
+                           <div>{item.product_name}</div>
+                           <div>{item.product_price}</div>
+                        </div>
+                     </Link>
+                  ))}
                </div>
-            ))
-         }
-      </div>
+            </div>
+         </div>
+      </>
    );
 };
 

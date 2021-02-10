@@ -8,6 +8,7 @@
 .container {
    width: 65%;
    margin: 0 auto;
+   border: #5c48d3 1px solid;
 }
 header {
    height: 50px;
@@ -38,12 +39,35 @@ h1 {
 .content {
    margin: 0 auto;
 
-   width: 50vh;
-   height: 80vh;
    display: flex;
    flex-direction: row;
    justify-content: space-around;
    align-items: baseline;
+   border: #5c48d3 1px solid;
+}
+.list_product {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+}
+
+.products {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+.product {
+   margin-right: 5px;
+   border: #5c48d3 1px solid;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 240px;
+   height: 400px;
+   margin-bottom: 10px;
+   background-color: #fff;
+   border-radius: 3%;
 }
 
 footer {
