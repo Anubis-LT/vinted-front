@@ -9,8 +9,8 @@ const Product = () => {
    const [data, setData] = useState({});
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
-      const response = await axios.post(
-         "https://greg-vinted-api.herokuapp.com/offers/" + id
+      const response = await axios.get(
+         "https://lereacteur-vinted-api.herokuapp.com/offer/" + id
       );
       setData(response.data);
       setIsLoading(false);
@@ -26,10 +26,33 @@ const Product = () => {
       <>
          <div>
             <Header />
-            <div className="container">
-               <div className="product_detail">
-                  <div>photo</div>
-                  <div>Détails sid : {id}</div>
+            <div className="pred_desc_fond">
+               <div className="container">
+                  <div className="product_detail">
+                     <div className="pred_desc1">
+                        <div>
+                           <img
+                              className="img_prod_descr"
+                              src={data.product_image.secure_url}
+                              alt="produit"
+                           />
+                        </div>
+
+                        <div className="pred_desc2">
+                           {data.product_price} €
+                           {data.product_details.map((item, index) => (
+                              <>
+                                 <div>{item.MARQUE}</div>
+                                 <div>{item.TAILLE}</div>
+                                 <div> {item.ÉTAT}</div>
+                                 <div>{item.MARQUE}</div>
+                                 <div>{item.EMPLACEMENT}</div>
+                              </>
+                           ))}
+                           <button>Acheter</button>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
             <Footer />

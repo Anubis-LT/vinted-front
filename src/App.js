@@ -13,7 +13,7 @@ function App() {
       // "https://greg-vinted-api.herokuapp.com/offers"  =======> Il manque les images => A FAIRE
       // "https://lereacteur-vinted-api.herokuapp.com/offers"
       const response = await axios.get(
-         "https://greg-vinted-api.herokuapp.com/offers"
+         "https://lereacteur-vinted-api.herokuapp.com/offers"
       );
       setData(response.data);
       setIsLoading(false);
