@@ -9,22 +9,29 @@ const Product = () => {
    const [data, setData] = useState({});
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
-      const response = await axios.get(
-         "https://lereacteur-vinted-api.herokuapp.com/offer/" + { id }
+      const response = await axios.post(
+         "https://greg-vinted-api.herokuapp.com/offers/" + id
       );
       setData(response.data);
       setIsLoading(false);
    };
+
    useEffect(() => {
       fetchData();
    }, []);
+
    return isLoading ? (
       <span>En cours de chargement... </span>
    ) : (
       <>
          <div>
             <Header />
-            <div className="container">id : {id}</div>
+            <div className="container">
+               <div className="product_detail">
+                  <div>photo</div>
+                  <div>Détails sid : {id}</div>
+               </div>
+            </div>
             <Footer />
          </div>
       </>

@@ -69,6 +69,18 @@ h1 {
    background-color: #fff;
    border-radius: 3%;
 }
+.product_detail {
+   padding: 20 px;
+   height: 800px;
+}
+.product_detail div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.product_detail div:first-child {
+   width: 50%;
+}
 
 footer {
    align-items: center;
