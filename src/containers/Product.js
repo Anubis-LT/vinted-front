@@ -1,6 +1,4 @@
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -10,7 +8,7 @@ const Product = () => {
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
       const response = await axios.get(
-         "https://lereacteur-vinted-api.herokuapp.com/offer/" + id
+         "https://greg-vinted-api.herokuapp.com/offers/" + id
       );
       setData(response.data);
       setIsLoading(false);
@@ -26,7 +24,6 @@ const Product = () => {
    ) : (
       <>
          <div>
-            <Header />
             <div className="pred_desc_fond">
                <div className="container">
                   <div className="product_detail">
@@ -83,7 +80,6 @@ const Product = () => {
                   </div>
                </div>
             </div>
-            <Footer />
          </div>
       </>
    );

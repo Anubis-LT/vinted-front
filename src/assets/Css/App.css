@@ -5,11 +5,15 @@
 * {
    font-family: "Roboto", sans-serif;
 }
+a {
+   text-decoration: none;
+   color: #29b0ba;
+}
 .container {
    width: 65%;
    margin: 0 auto;
 }
-
+/************ HEADER ********/
 header {
    height: 50px;
    align-items: center;
@@ -22,6 +26,36 @@ h1 {
    width: 90px;
    margin-top: 8px;
 }
+.btn_connection {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.btn_connection div:first-child {
+   display: flex;
+   justify-content: flex-start;
+}
+.btn_connection div:last-child {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   width: 400px;
+}
+
+.btn_connection div:last-child a {
+   color: #29b0ba;
+   border: #29b0ba 1px solid;
+   border-radius: 3px;
+   margin-right: 20px;
+   height: 30px;
+   width: 123px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 .sep {
    border-bottom: rgb(163, 163, 163) 1px solid;
 }
@@ -99,6 +133,61 @@ h1 {
    height: 350px;
    width: 240px;
    object-fit: cover;
+}
+/*************** Login *******/
+.login {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   height: 40vh;
+   padding: 60px;
+}
+.login span {
+   font-size: 25px;
+   color: #292929;
+}
+.login p {
+   color: #29b0ba;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 300px;
+}
+.login input {
+   width: 300px;
+   height: 30px;
+   border: none;
+   border-bottom: #292929 1px solid;
+}
+.login button {
+   background-color: #29b0ba;
+   width: 300px;
+   height: 50px;
+   border: 0px;
+   color: #fff;
+   font-size: 20px;
+   border-radius: 10px;
+}
+
+.newsletterInscription {
+   display: flex;
+   justify-content: space-start;
+   align-items: center;
+
+   color: #292929;
+   font-size: 18px;
+   width: 300px;
+}
+.newsletterInscription input {
+   width: 30px;
+   margin-right: 20px;
+   border-radius: 5px;
+   border: 5px solid;
+}
+
+.newsletterInscription input:checked {
+   background-color: #29b0ba;
 }
 
 /********PRODUCT DESCRIPTIF****/
