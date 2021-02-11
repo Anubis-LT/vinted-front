@@ -15,6 +15,7 @@ const Content = ({ data }) => {
                         <div>
                            <img
                               className="avatar"
+                              alt="avatar"
                               src={item.owner.account.avatar.secure_url}
                            />
                            {item.owner.account.username}
@@ -22,6 +23,7 @@ const Content = ({ data }) => {
                         <Link to={`/offer/${item._id}`}>
                            <img
                               className="prodimg"
+                              alt="avatar"
                               src={item.product_pictures[0].secure_url}
                            ></img>
                         </Link>

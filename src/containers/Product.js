@@ -68,6 +68,7 @@ const Product = () => {
                            <div className="pred_descAvatar">
                               <img
                                  className="avatar avatar1"
+                                 alt="avatar"
                                  src={data.owner.account.avatar.secure_url}
                               />
                               {data.owner.account.username}
