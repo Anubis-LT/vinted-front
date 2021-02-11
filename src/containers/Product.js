@@ -18,7 +18,7 @@ const Product = () => {
 
    useEffect(() => {
       fetchData();
-   }, []);
+   }, [id]);
 
    return isLoading ? (
       <span>En cours de chargement... </span>
@@ -39,17 +39,43 @@ const Product = () => {
                         </div>
 
                         <div className="pred_desc2">
-                           {data.product_price} €
-                           {data.product_details.map((item, index) => (
-                              <>
-                                 <div>{item.MARQUE}</div>
-                                 <div>{item.TAILLE}</div>
-                                 <div> {item.ÉTAT}</div>
-                                 <div>{item.MARQUE}</div>
-                                 <div>{item.EMPLACEMENT}</div>
-                              </>
-                           ))}
-                           <button>Acheter</button>
+                           <div className="pred_desc3">
+                              {data.product_price} €
+                           </div>
+                           <div className="pred_desc4">
+                              <div>
+                                 <p>MARQUE</p>
+                                 <p>TAILLE</p>
+                                 <p>ÉTAT</p>
+                                 <p>COULEUR</p>
+                                 <p>EMPLACEMENT</p>
+                              </div>
+                              <div>
+                                 {data.product_details.map((item, index) => (
+                                    <>
+                                       <p>{item.MARQUE}</p>
+                                       <p>{item.TAILLE}</p>
+                                       <p>{item.ÉTAT}</p>
+                                       <p>{item.COULEUR}</p>
+                                       <p>{item.EMPLACEMENT}</p>
+                                    </>
+                                 ))}
+                              </div>
+                           </div>
+                           <div className="sep"></div>
+                           {data.product_name}
+                           {data.product_description}
+                           <div className="pred_descAvatar">
+                              <img
+                                 className="avatar avatar1"
+                                 src={data.owner.account.avatar.secure_url}
+                              />
+                              {data.owner.account.username}
+                           </div>
+
+                           <div className="pred_desc5">
+                              <button>Acheter</button>
+                           </div>
                         </div>
                      </div>
                   </div>
