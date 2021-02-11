@@ -18,7 +18,7 @@ const Product = () => {
 
    useEffect(() => {
       fetchData();
-   }, [id]);
+   }, [fetchData]);
 
    return isLoading ? (
       <span>En cours de chargement... </span>
