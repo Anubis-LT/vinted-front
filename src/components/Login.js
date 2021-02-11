@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ setUser }) => {
    const [email, setEmail] = useState();
-   const [password, setPassword] = useState("azerty");
+   const [password, setPassword] = useState();
    const history = useHistory();
 
    const handleSubmit = (event) => {
@@ -15,19 +15,20 @@ const Login = ({ setUser }) => {
             const response = await axios.post(
                "https://lereacteur-vinted-api.herokuapp.com/user/login",
                {
-                  email: event.email,
-                  password: event.password,
+                  email: email,
+                  password: password,
                }
             );
             console.log(response);
+            alert(response.data.token);
+            const token = response.data.token;
+            setUser(token);
+            history.push("/");
          } catch (error) {
             console.log(error.message);
+            alert(error.message);
          }
       };
-
-      const token = "";
-      setUser(token);
-      history.push("/");
    };
    return (
       <div>

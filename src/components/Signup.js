@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const Signup = ({ setUser }) => {
+
    const [username, setUserName] = useState();
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
@@ -17,12 +17,15 @@ const Signup = ({ setUser }) => {
          const response = await axios.post(
             "https://lereacteur-vinted-api.herokuapp.com/user/signup",
             {
-               username: { username },
-               email: { email },
-               password: { password },
+               username: username,
+               email: email,
+               password: password,
             }
          );
-         console.log(response);
+
+         alert(response)
+
+         history.push("/");
       } catch (error) {
          return error.message;
       }

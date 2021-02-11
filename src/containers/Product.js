@@ -8,7 +8,7 @@ const Product = () => {
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
       const response = await axios.get(
-         "https://greg-vinted-api.herokuapp.com/offers/" + id
+         "https://lereacteur-vinted-api.herokuapp.com/offers" + id
       );
       setData(response.data);
       setIsLoading(false);
