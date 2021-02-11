@@ -18,7 +18,8 @@ const Product = () => {
 
    useEffect(() => {
       fetchData();
-   }, [fetchData]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    return isLoading ? (
       <span>En cours de chargement... </span>
