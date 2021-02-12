@@ -3,31 +3,33 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+const Signup = ({ setUser }) => {
    const [username, setUserName] = useState();
+   const [phone, setPhone] = useState();
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
    const [checkbox, setCheckbox] = useState();
-
    const history = useHistory();
 
    const handleSubmit = async (event) => {
-      event.preventDefault();
-
       try {
+         event.preventDefault();
          const response = await axios.post(
             "https://lereacteur-vinted-api.herokuapp.com/user/signup",
             {
                username: username,
                email: email,
+               phone: phone,
                password: password,
             }
          );
-         "titi"
-         alert(response)
-
-         history.push("/");
+         if (response.data.token) {
+            setUser(response.data.token);
+            // Naviguer vers la home page
+            history.push("/");
+         }
       } catch (error) {
-         return error.message;
+         console.log(error);
       }
    };
    return (
@@ -42,6 +44,12 @@ import axios from "axios";
                      type="text"
                      value={username}
                      placeholder="Nom d'utilisateur"
+                  />
+                  <input
+                     onChange={(event) => setPhone(event.target.value)}
+                     type="text"
+                     value={phone}
+                     placeholder="Téléphone"
                   />
                   <input
                      onChange={(event) => setEmail(event.target.value)}

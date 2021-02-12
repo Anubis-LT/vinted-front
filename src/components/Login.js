@@ -1,34 +1,32 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ setUser }) => {
+   const [errorMessage, setErrorMessage] = useState("");
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
    const history = useHistory();
 
-   const handleSubmit = (event) => {
-      event.preventDefault();
-      const fetchData = async () => {
-         try {
-            const response = await axios.post(
-               "https://lereacteur-vinted-api.herokuapp.com/user/login",
-               {
-                  email: email,
-                  password: password,
-               }
-            );
-            console.log(response);
-            alert(response.data.token);
-            const token = response.data.token;
-            setUser(token);
+   const handleSubmit = async (event) => {
+      try {
+         event.preventDefault();
+         // Requête axios vers la route /login du back
+         const response = await axios.post(
+            "https://lereacteur-vinted-api.herokuapp.com/user/login",
+            {
+               email: email,
+               password: password,
+            }
+         );
+         if (response.data.token) {
+            setUser(response.data.token);
+            // Naviguer vers la home page
             history.push("/");
-         } catch (error) {
-            console.log(error.message);
-            alert(error.message);
          }
-      };
+      } catch (error) {
+         console.log(error.response.message);
+      }
    };
    return (
       <div>

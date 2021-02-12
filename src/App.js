@@ -42,7 +42,7 @@ function App() {
    ) : (
       <>
          <Router>
-            <Header />
+            <Header userToken={userToken} setUser={setUser} />
             <Switch>
                <Route path="/offer/:id">
                   <Product data={data} />
@@ -51,7 +51,7 @@ function App() {
                   <Login setUser={setUser} />
                </Route>
                <Route path="/signup">
-                  <Signup />
+                  <Signup setUser={setUser} />
                </Route>
                <Route path="/">
                   <Home data={data} />
