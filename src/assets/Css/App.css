@@ -26,6 +26,34 @@ h1 {
    width: 90px;
    margin-top: 8px;
 }
+.checkbox {
+   margin-right: 25px;
+}
+.checkbox input[name="price"] {
+   display: none;
+}
+.checkbox .wrapper {
+   background-color: #2cb1ba;
+   border-radius: 10px;
+   width: 42px;
+   height: 20px;
+   display: inline-flex;
+   align-items: center;
+   cursor: pointer;
+   outline: none;
+}
+.checkbox .knob {
+   background-color: #fff;
+   border: 1px solid #666;
+   border-radius: 100%;
+   position: relative;
+   width: 16px;
+   height: 16px;
+   left: 0;
+   transition: left 0.1s ease-in-out 0s;
+   font-weight: 700;
+}
+
 .btn_connection {
    width: 100%;
    display: flex;

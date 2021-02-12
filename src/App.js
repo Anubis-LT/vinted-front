@@ -31,23 +31,9 @@ function App() {
       // "https://lereacteur-vinted-api.herokuapp.com/offers"
       let req_Default = "https://lereacteur-vinted-api.herokuapp.com/offers";
 
-      // Title
-      if (params !== null) {
-         req_Default += "?title=" + params;
+      if (params !== undefined) {
+         req_Default += params;
       }
-
-      /* if (params.length > 0) {
-         req_Default += "?title=" + params;
-      }
-      if (params.length > 0) {
-         req_Default += "?title=" + params;
-      }
-      if (params.length > 0) {
-         req_Default += "?title=" + params;
-      }
-      if (params.length > 0) {
-         req_Default += "?title=" + params;
-      }*/
 
       const response = await axios.get(req_Default);
 

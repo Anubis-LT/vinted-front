@@ -4,11 +4,24 @@ import { Range } from "react-range";
 import { useState } from "react";
 
 const Header = ({ setUser, userToken, fetchData }) => {
-   const [search, setSearch] = useState("");
-
+   const [search, setSearch] = useState(null);
+   let req = "";
    const handleSubmit = (event) => {
       event.preventDefault();
-      fetchData(search);
+
+      // On construit la requete
+      let request = [];
+      if (search !== "") {
+         request.push("title=" + search);
+      }
+
+      if (request.length === 1) {
+         req = "?" + request[0];
+      } else if (request.length > 1) {
+         req = "?" + request.join("&");
+      }
+
+      fetchData(req);
    };
 
    return (
@@ -24,6 +37,7 @@ const Header = ({ setUser, userToken, fetchData }) => {
                      type="text"
                      placeholder="Recherche des articles"
                   />
+                  <div>// Creer une checkbox de prix </div>
                </form>
                <div>
                   {userToken ? (
