@@ -1,6 +1,16 @@
 import Logo from "../assets/Image/logo.png";
 import { Link } from "react-router-dom";
-const Header = ({ setUser, userToken }) => {
+import { Range } from "react-range";
+import { useState } from "react";
+
+const Header = ({ setUser, userToken, fetchData }) => {
+   const [search, setSearch] = useState("");
+
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      fetchData(search);
+   };
+
    return (
       <>
          <header className="container">
@@ -8,6 +18,13 @@ const Header = ({ setUser, userToken }) => {
                <div>
                   <img className="logo" src={Logo} alt="Logo Vinted"></img>
                </div>
+               <form onSubmit={handleSubmit}>
+                  <input
+                     onChange={(event) => setSearch(event.target.value)}
+                     type="text"
+                     placeholder="Recherche des articles"
+                  />
+               </form>
                <div>
                   {userToken ? (
                      <Link onClick={() => setUser(null)}>Se déconnecter</Link>

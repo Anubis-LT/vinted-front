@@ -25,12 +25,32 @@ function App() {
 
    const [data, setData] = useState({});
    const [isLoading, setIsLoading] = useState(true);
-   const fetchData = async () => {
+
+   const fetchData = async (params) => {
       // "https://greg-vinted-api.herokuapp.com/offers"  =======> Il manque les images => A FAIRE
       // "https://lereacteur-vinted-api.herokuapp.com/offers"
-      const response = await axios.get(
-         "https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
+      let req_Default = "https://lereacteur-vinted-api.herokuapp.com/offers";
+
+      // Title
+      if (params !== null) {
+         req_Default += "?title=" + params;
+      }
+
+      /* if (params.length > 0) {
+         req_Default += "?title=" + params;
+      }
+      if (params.length > 0) {
+         req_Default += "?title=" + params;
+      }
+      if (params.length > 0) {
+         req_Default += "?title=" + params;
+      }
+      if (params.length > 0) {
+         req_Default += "?title=" + params;
+      }*/
+
+      const response = await axios.get(req_Default);
+
       setData(response.data);
       setIsLoading(false);
    };
@@ -42,7 +62,11 @@ function App() {
    ) : (
       <>
          <Router>
-            <Header userToken={userToken} setUser={setUser} />
+            <Header
+               userToken={userToken}
+               setUser={setUser}
+               fetchData={fetchData}
+            />
             <Switch>
                <Route path="/offer/:id">
                   <Product data={data} />
