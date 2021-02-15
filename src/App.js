@@ -16,7 +16,7 @@ function App() {
    // Greg Prod "https://greg-vinted-api.herokuapp.com"
    // local "http://localhost:3001"
 
-   const AdressSite = "http://localhost:3001";
+   const AdressSite = "https://greg-vinted-api.herokuapp.com";
    const [userToken, setUserToken] = useState();
    const setUser = (token) => {
       if (token) {
