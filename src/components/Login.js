@@ -39,17 +39,11 @@ const Login = ({ setUser, AdressSite }) => {
                      onChange={(event) => setEmail(event.target.value)}
                      type="text"
                      placeholder="Adresse Email"
-                     onChange={(event) => {
-                        setEmail(event.target.value);
-                     }
                   />
                   <input
                      onChange={(event) => setPassword(event.target.value)}
                      type="password"
                      placeholder="Mot de Passe"
-                     onChange={(event) => {
-                        setPassword(event.target.value);
-                     }
                   />
                   <button type="submit">Se connecter</button>
                   <p>
