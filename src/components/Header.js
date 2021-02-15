@@ -1,8 +1,8 @@
 import Logo from "../assets/Image/logo.png";
 import { Link } from "react-router-dom";
-import { Range } from "react-range";
+
 import { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Header = ({ setUser, userToken, fetchData }) => {
    const [search, setSearch] = useState(null);
@@ -39,7 +39,7 @@ const Header = ({ setUser, userToken, fetchData }) => {
                      type="text"
                      placeholder="Recherche des articles"
                   />
-                  <div>// Creer une checkbox de prix </div>
+                  <div> Creer une checkbox de prix </div>
                </form>
                <div>
                   {userToken ? (

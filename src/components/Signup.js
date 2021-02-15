@@ -10,7 +10,7 @@ const Signup = ({ setUser, AdressSite }) => {
    const [password, setPassword] = useState();
    const [file, setFile] = useState({});
    const [preview, setPreview] = useState("");
-   const [checkbox, setCheckbox] = useState();
+
    const history = useHistory();
 
    const handleSubmit = async (event) => {
@@ -108,7 +108,7 @@ const Signup = ({ setUser, AdressSite }) => {
                   />
 
                   <div className="newsletterInscription">
-                     <input type="checkbox" checked={checkbox} />
+                     <input type="checkbox" />
                      S'incrire à notre newsletter
                   </div>
                   <p></p>

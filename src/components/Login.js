@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ setUser, AdressSite }) => {
-   const [errorMessage, setErrorMessage] = useState("");
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
    const history = useHistory();
@@ -42,7 +41,7 @@ const Login = ({ setUser, AdressSite }) => {
                      placeholder="Adresse Email"
                      onChange={(event) => {
                         setEmail(event.target.value);
-                     }}
+                     }
                   />
                   <input
                      onChange={(event) => setPassword(event.target.value)}
@@ -50,7 +49,7 @@ const Login = ({ setUser, AdressSite }) => {
                      placeholder="Mot de Passe"
                      onChange={(event) => {
                         setPassword(event.target.value);
-                     }}
+                     }
                   />
                   <button type="submit">Se connecter</button>
                   <p>
