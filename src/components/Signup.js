@@ -3,25 +3,29 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Signup = ({ setUser }) => {
+const Signup = ({ setUser, AdressSite }) => {
    const [username, setUserName] = useState();
    const [phone, setPhone] = useState();
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
+   const [file, setFile] = useState({});
+   const [preview, setPreview] = useState("");
    const [checkbox, setCheckbox] = useState();
    const history = useHistory();
 
    const handleSubmit = async (event) => {
       try {
          event.preventDefault();
+         const formData = new FormData();
+         formData.append("picture", file);
+         formData.append("username", username);
+         formData.append("email", email);
+         formData.append("phone", phone);
+         formData.append("password", password);
+
          const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-            {
-               username: username,
-               email: email,
-               phone: phone,
-               password: password,
-            }
+            `${AdressSite}/user/signup`,
+            formData
          );
          if (response.data.token) {
             setUser(response.data.token);
@@ -29,6 +33,7 @@ const Signup = ({ setUser }) => {
             history.push("/");
          }
       } catch (error) {
+         alert("toto:" + error);
          console.log(error);
       }
    };
@@ -46,12 +51,6 @@ const Signup = ({ setUser }) => {
                      placeholder="Nom d'utilisateur"
                   />
                   <input
-                     onChange={(event) => setPhone(event.target.value)}
-                     type="text"
-                     value={phone}
-                     placeholder="Téléphone"
-                  />
-                  <input
                      onChange={(event) => setEmail(event.target.value)}
                      type="text"
                      value={email}
@@ -63,6 +62,51 @@ const Signup = ({ setUser }) => {
                      value={password}
                      placeholder="Mot de Passe"
                   />
+                  <div className="file-select">
+                     {preview ? (
+                        <div className="dashed-preview-image">
+                           <img src={preview} alt="pré-visualisation" />
+                           <div
+                              className="remove-img-button"
+                              onClick={() => {
+                                 setPreview("");
+                              }}
+                           >
+                              X
+                           </div>
+                        </div>
+                     ) : (
+                        <div className="dashed-preview-without">
+                           <div className="input-design-default">
+                              <label htmlFor="file" className="label-file">
+                                 <span className="input-sign">+</span>
+                                 <span>Ajoute une photo</span>
+                              </label>
+                              <input
+                                 id="file"
+                                 type="file"
+                                 className="input-file"
+                                 onChange={(event) => {
+                                    setFile(event.target.files[0]);
+                                    setPreview(
+                                       URL.createObjectURL(
+                                          event.target.files[0]
+                                       )
+                                    );
+                                 }}
+                              />
+                           </div>
+                        </div>
+                     )}
+                  </div>
+
+                  <input
+                     onChange={(event) => setPhone(event.target.value)}
+                     type="text"
+                     value={phone}
+                     placeholder="Téléphone"
+                  />
+
                   <div className="newsletterInscription">
                      <input type="checkbox" checked={checkbox} />
                      S'incrire à notre newsletter

@@ -2,12 +2,12 @@ import Hook from "../components/Hook";
 import Menu from "../components/Menu";
 import Content from "../components/Content";
 
-const Home = ({ data }) => {
+const Home = ({ data, AdressSite }) => {
    return (
       <div>
          <Menu />
          <Hook />
-         <Content data={data} />
+         <Content data={data} AdressSite={AdressSite} />
       </div>
    );
 };

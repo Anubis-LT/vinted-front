@@ -2,14 +2,12 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Product = () => {
+const Product = ({ AdressSite }) => {
    const { id } = useParams();
    const [data, setData] = useState({});
    const [isLoading, setIsLoading] = useState(true);
    const fetchData = async () => {
-      const response = await axios.get(
-         "https://lereacteur-vinted-api.herokuapp.com/offer/" + id
-      );
+      const response = await axios.get(`${AdressSite}/offer/${id}`);
       setData(response.data);
       setIsLoading(false);
    };

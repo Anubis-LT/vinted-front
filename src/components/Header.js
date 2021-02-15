@@ -2,9 +2,11 @@ import Logo from "../assets/Image/logo.png";
 import { Link } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 
 const Header = ({ setUser, userToken, fetchData }) => {
    const [search, setSearch] = useState(null);
+   const history = useHistory();
    let req = "";
    const handleSubmit = (event) => {
       event.preventDefault();
@@ -41,11 +43,31 @@ const Header = ({ setUser, userToken, fetchData }) => {
                </form>
                <div>
                   {userToken ? (
-                     <Link onClick={() => setUser(null)}>Se déconnecter</Link>
+                     <>
+                        <Link onClick={() => setUser(null)}>
+                           Se déconnecter
+                        </Link>
+                        <button
+                           onClick={() => {
+                              history.push("/publish");
+                           }}
+                           className="header-button button-sold"
+                        >
+                           Vends tes articles
+                        </button>
+                     </>
                   ) : (
                      <>
                         <Link to="/signup">S'inscrire</Link>
                         <Link to="/login">Se connecter</Link>
+                        <button
+                           onClick={() => {
+                              history.push("/publish");
+                           }}
+                           className="header-button button-sold"
+                        >
+                           Vends tes articles
+                        </button>
                      </>
                   )}
                </div>

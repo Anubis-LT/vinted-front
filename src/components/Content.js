@@ -18,19 +18,25 @@ const Content = ({ data }) => {
                               alt="avatar"
                               src={item.owner.account.avatar.secure_url}
                            />
+
                            {item.owner.account.username}
                         </div>
                         <Link to={`/offer/${item._id}`}>
-                           <img
-                              className="prodimg"
-                              alt="avatar"
-                              src={item.product_pictures[0].secure_url}
-                           ></img>
+                           {item.product_image ? (
+                              <img
+                                 className="prodimg"
+                                 alt="avatar"
+                                 src={item.product_image.secure_url}
+                              ></img>
+                           ) : (
+                              <div>Annonce sans image</div>
+                           )}
                         </Link>
+
                         <div className="descr1">
                            <div>{number(item.product_price)} €</div>
                            <div>
-                              {item.product_details[0].MARQUE}{" "}
+                              {item.product_details[0].MARQUE}
                               {item.product_details[1].TAILLE}
                            </div>
                         </div>

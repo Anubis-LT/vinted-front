@@ -6,12 +6,17 @@ import Footer from "./components/Footer";
 import Cookies from "js-cookie";
 import Home from "./containers/Home";
 import Product from "./containers/Product";
+import Publish from "./containers/Publish";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
+   // Greg Prod "https://greg-vinted-api.herokuapp.com"
+   // local "http://localhost:3001"
+
+   const AdressSite = "http://localhost:3001";
    const [userToken, setUserToken] = useState();
    const setUser = (token) => {
       if (token) {
@@ -27,9 +32,7 @@ function App() {
    const [isLoading, setIsLoading] = useState(true);
 
    const fetchData = async (params) => {
-      // "https://greg-vinted-api.herokuapp.com/offers"  =======> Il manque les images => A FAIRE
-      // "https://lereacteur-vinted-api.herokuapp.com/offers"
-      let req_Default = "https://lereacteur-vinted-api.herokuapp.com/offers";
+      let req_Default = `${AdressSite}/offers`;
 
       if (params !== undefined) {
          req_Default += params;
@@ -55,13 +58,16 @@ function App() {
             />
             <Switch>
                <Route path="/offer/:id">
-                  <Product data={data} />
+                  <Product data={data} AdressSite={AdressSite} />
                </Route>
                <Route path="/login">
-                  <Login setUser={setUser} />
+                  <Login setUser={setUser} AdressSite={AdressSite} />
                </Route>
                <Route path="/signup">
-                  <Signup setUser={setUser} />
+                  <Signup setUser={setUser} AdressSite={AdressSite} />
+               </Route>
+               <Route path="/publish">
+                  <Publish token={userToken} AdressSite={AdressSite} />
                </Route>
                <Route path="/">
                   <Home data={data} />

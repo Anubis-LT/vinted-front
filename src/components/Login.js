@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, AdressSite }) => {
    const [errorMessage, setErrorMessage] = useState("");
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
@@ -11,13 +11,13 @@ const Login = ({ setUser }) => {
    const handleSubmit = async (event) => {
       try {
          event.preventDefault();
+         const formData = new FormData();
+         formData.append("email", email);
+         formData.append("password", password);
          // Requête axios vers la route /login du back
          const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/login",
-            {
-               email: email,
-               password: password,
-            }
+            `${AdressSite}/user/login`,
+            formData
          );
          if (response.data.token) {
             setUser(response.data.token);
@@ -25,7 +25,8 @@ const Login = ({ setUser }) => {
             history.push("/");
          }
       } catch (error) {
-         console.log(error.response.message);
+         alert(error);
+         console.log(error);
       }
    };
    return (
@@ -39,11 +40,17 @@ const Login = ({ setUser }) => {
                      onChange={(event) => setEmail(event.target.value)}
                      type="text"
                      placeholder="Adresse Email"
+                     onChange={(event) => {
+                        setEmail(event.target.value);
+                     }}
                   />
                   <input
                      onChange={(event) => setPassword(event.target.value)}
                      type="password"
                      placeholder="Mot de Passe"
+                     onChange={(event) => {
+                        setPassword(event.target.value);
+                     }}
                   />
                   <button type="submit">Se connecter</button>
                   <p>
